@@ -103,12 +103,7 @@ public struct ModernSlider: View {
             )
         }
         .padding(12)
-        .if(title != nil) { view in
-            view
-                .background(.regularMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .shadow(color: colorScheme.thumbShadow, radius: 8)
-        }
+        .modifier(ConditionalBackground(isActive: title != nil))
         .onChange(of: value) { newValue in
             updateOffset(to: newValue)
         }
@@ -213,6 +208,20 @@ private struct SliderView: View {
     }
 }
 
+private struct ConditionalBackground: ViewModifier {
+    @Environment(\.colorScheme) private var colorScheme
+
+    let isActive: Bool
+
+    func body(content: Content) -> some View {
+        content
+            .background(isActive ? AnyShapeStyle(.regularMaterial) : AnyShapeStyle(Color.clear))
+            .clipShape(RoundedRectangle(cornerRadius: isActive ? 12 : 0))
+            .shadow(color: colorScheme.thumbShadow, radius: isActive ? 8 : 0)
+    }
+}
+
 #Preview {
     ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(50))
 }
+
