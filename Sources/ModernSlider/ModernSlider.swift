@@ -131,6 +131,7 @@ public struct ModernSlider: View {
 private struct SliderView: View {
     @Binding var offset: CGFloat
     @Binding var isDragging: Bool
+
     let sliderWidth: CGFloat
     let sliderHeight: CGFloat
     let sliderColor: Color
@@ -213,7 +214,5 @@ private struct SliderView: View {
 }
 
 #Preview {
-
-        ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(50))
-
+    ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(50))
 }
