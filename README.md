@@ -7,9 +7,13 @@
 
 ## Features
 
-| Features ||
-|----------|------|
-| • Customizable width, height, system image, and color<br>• Optional title with a background view<br>• Smooth sliding animation<br>• Callbacks for value changes and drag end events<br>• Support for light and dark mode | ![ModernSlider Examples](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-app.png) |
+- Customizable width, height, system image, and color
+- Optional title with a background view
+- Smooth sliding animation
+- Callbacks for value changes and drag end events
+- Support for light and dark mode
+
+![ModernSlider Examples](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-app.png)
 
 ## Requirements
 
