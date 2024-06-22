@@ -3,6 +3,11 @@
 
 ![ModernSlider Image](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/hero-image.png)
 
+[![Swift](https://img.shields.io/badge/swift-orange.svg)](https://swift.org)
+[![GitHub stars](https://img.shields.io/github/stars/arjun-dureja/ModernSlider.svg)](https://github.com/arjun-dureja/ModernSlider/stargazers)
+[![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/arjun-dureja/ModernSlider/blob/main/LICENSE)
+[![Platform](https://img.shields.io/badge/platform-iOS%20|%20macOS%20|%20iPadOS-blue.svg)](https://developer.apple.com)
+
 `ModernSlider` is a customizable slider component for SwiftUI, inspired by the macOS Control Center sliders, that provides a sleek and modern interface for selecting values from a range.
 
 ## Features
@@ -78,7 +83,7 @@ struct ContentView: View {
 
 #### ModernSlider offers various customization options:
 
-Custom image, width, height, and color
+Custom image, width, height, and color:
 
 ```swift
 ModernSlider(
@@ -135,4 +140,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-ModernSlider is available under the MIT license. See the LICENSE file for more info.
+`ModernSlider` is available under the MIT license. See the [LICENSE](https://github.com/arjun-dureja/ModernSlider/blob/main/LICENSE) file for more info.
