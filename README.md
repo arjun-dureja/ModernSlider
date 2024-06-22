@@ -17,8 +17,7 @@
 
 - iOS 14.0+
 - macOS 11.0+
-- Swift 5.3+
-- Xcode 12.0+
+- Mac Catalyst 15.0+
 
 ## Installation
 
