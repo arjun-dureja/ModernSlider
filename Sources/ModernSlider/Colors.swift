@@ -14,7 +14,7 @@ struct Colors {
     static let lightTrackFill = Color(white: 0.8).opacity(0.5)
     static let lightThumbFill = Color(red: 240/255, green: 240/255, blue: 240/255)
     static let darkThumbFill = Color(red: 225/255, green: 225/255, blue: 225/255)
-    static let thumbShadowLight = Color.black.opacity(0.1)
+    static let thumbShadowLight = Color.black.opacity(0.25)
     static let thumbShadowDark = Color.white.opacity(0.05)
     static let thumbIconColor = Color(red: 25/255, green: 25/255, blue: 25/255)
 }

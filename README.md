@@ -24,7 +24,16 @@
 
 ### Swift Package Manager
 
-You can install ModernSlider using Swift Package Manager. Add the following to your `Package.swift` file:
+To add `ModernSlider` to your project, follow these steps:
+
+1. Open your project in Xcode.
+1. Go to File > Add Packages.
+1. Enter the repository URL: https://github.com/arjun-dureja/ModernSlider
+1. Select the ModernSlider package and add it to your project.
+
+---
+
+Alternatively, add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
@@ -50,7 +59,6 @@ struct ContentView: View {
         ModernSlider(
             "Brightness",
             systemImage: "sun.max.fill",
-            sliderColor: .yellow,
             value: $sliderValue,
             onChange: { newValue in
                 print("Slider value changed to \(newValue)")
@@ -63,9 +71,13 @@ struct ContentView: View {
 }
 ```
 
+![Example 1](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-1.gif)
+
 ### Customization
 
-ModernSlider offers various customization options:
+#### ModernSlider offers various customization options:
+
+Custom image, width, height, and color
 
 ```swift
 ModernSlider(
@@ -77,6 +89,16 @@ ModernSlider(
     value: $volume
 )
 ```
+![Example 2](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-2.gif)
+
+No title:
+```swift
+ModernSlider(
+    systemImage: "circle",
+    value: $value
+)
+```
+![Example 3](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-3.gif)
 
 ## API Reference
 
