@@ -82,22 +82,6 @@ public struct ModernSlider: View {
         return max(halfThumbSize, fillAmount) + halfThumbSize
     }
 
-    private var dragGesture: some Gesture {
-        DragGesture(minimumDistance: 0)
-            .onChanged { value in
-                isDragging = true
-                updateOffset(at: value.location.x)
-
-                // Convert offset to percentage
-                self.value = Double(offset / (sliderWidth - sliderHeight)) * 100
-                onChange?(self.value)
-            }
-            .onEnded { _ in
-                isDragging = false
-                onChangeEnd?(self.value)
-            }
-    }
-
     public var body: some View {
         VStack(alignment: .leading) {
             if let title {
@@ -106,29 +90,85 @@ public struct ModernSlider: View {
                     .font(.system(size: halfThumbSize))
             }
 
-            ZStack(alignment: .leading) {
-                sliderTrack
-                sliderFill
-                sliderThumb
-            }
-            .gesture(dragGesture)
-            .animation(.easeIn(duration: 0.1), value: offset)
+            SliderView(
+                offset: $offset,
+                isDragging: $isDragging,
+                sliderWidth: sliderWidth,
+                sliderHeight: sliderHeight,
+                sliderColor: sliderColor,
+                systemImage: systemImage,
+                colorScheme: colorScheme,
+                onChange: updateValue,
+                onChangeEnd: { onChangeEnd?(value) }
+            )
         }
         .padding(12)
-        .if(title != nil, transform: { view in
+        .if(title != nil) { view in
             view
                 .background(.regularMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(color: colorScheme.thumbShadow, radius: 8)
-
-        })
+        }
         .onChange(of: value) { newValue in
             updateOffset(to: newValue)
         }
         .onAppear {
-            // Initial offset
             updateOffset(to: value)
         }
+    }
+
+    private func updateValue() {
+        value = Double(offset / (sliderWidth - sliderHeight)) * 100
+        onChange?(value)
+    }
+
+    private func updateOffset(to value: Double) {
+        let newOffset = (value / 100.0) * (sliderWidth - sliderHeight)
+        offset = max(0, min(newOffset, sliderWidth - sliderHeight))
+    }
+}
+
+private struct SliderView: View {
+    @Binding var offset: CGFloat
+    @Binding var isDragging: Bool
+    let sliderWidth: CGFloat
+    let sliderHeight: CGFloat
+    let sliderColor: Color
+    let systemImage: String
+    let colorScheme: ColorScheme
+    let onChange: () -> Void
+    let onChangeEnd: () -> Void
+
+    private var halfThumbSize: CGFloat {
+        sliderHeight / 2
+    }
+
+    private var sliderFillWidth: CGFloat {
+        let fillAmount = min(offset + halfThumbSize, sliderWidth - halfThumbSize)
+        return max(halfThumbSize, fillAmount) + halfThumbSize
+    }
+
+    private var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                isDragging = true
+                updateOffset(at: value.location.x)
+                onChange()
+            }
+            .onEnded { _ in
+                isDragging = false
+                onChangeEnd()
+            }
+    }
+
+    var body: some View {
+        ZStack(alignment: .leading) {
+            sliderTrack
+            sliderFill
+            sliderThumb
+        }
+        .gesture(dragGesture)
+        .animation(.easeIn(duration: 0.1), value: offset)
     }
 
     private var sliderTrack: some View {
@@ -169,11 +209,6 @@ public struct ModernSlider: View {
     private func updateOffset(at location: CGFloat) {
         let adjustedLocation = location - halfThumbSize
         offset = max(0, min(adjustedLocation, sliderWidth - sliderHeight))
-    }
-
-    private func updateOffset(to value: Double) {
-        let newOffset = (value / 100.0) * (sliderWidth - sliderHeight)
-        offset = max(0, min(newOffset, sliderWidth - sliderHeight))
     }
 }
 
