@@ -13,7 +13,7 @@
 - Callbacks for value changes and drag end events
 - Support for light and dark mode
 
-![ModernSlider Examples](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-app.png)
+<img src="https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-app.png" width="400" />
 
 ## Requirements
 
@@ -72,7 +72,7 @@ struct ContentView: View {
 }
 ```
 
-![Example 1](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-1.gif)
+<img src="https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-1.gif" width="400" />
 
 ### Customization
 
@@ -90,7 +90,7 @@ ModernSlider(
     value: $volume
 )
 ```
-![Example 2](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-2.gif)
+<img src="https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-2.gif" width="400" />
 
 No title:
 ```swift
@@ -99,7 +99,7 @@ ModernSlider(
     value: $value
 )
 ```
-![Example 3](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-3.gif)
+<img src="https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/example-3.gif" width="400" />
 
 ## API Reference
 
