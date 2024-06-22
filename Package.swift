@@ -5,7 +5,9 @@ import PackageDescription
 let package = Package(
     name: "ModernSlider",
     platforms: [
-        .macOS(.v13), .iOS(.v15)
+        .macOS(.v13),
+        .iOS(.v15),
+        .macCatalyst(.v15)
     ],
     products: [
         .library(
