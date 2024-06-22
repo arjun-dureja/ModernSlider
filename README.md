@@ -1,7 +1,7 @@
 
 # ModernSlider
 
-![ModernSlider Image](https://https://github.com/arjun-dureja/ModernSlider/Assets/hero-image.png)
+![ModernSlider Image](https://github.com/arjun-dureja/ModernSlider/blob/main/Assets/hero-image.png)
 
 `ModernSlider` is a customizable slider component for SwiftUI, inspired by the macOS Control Center sliders, that provides a sleek and modern interface for selecting values from a range.
 
