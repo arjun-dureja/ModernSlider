@@ -11,7 +11,6 @@
 		7218485C2C214CC300105322 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7218485B2C214CC300105322 /* ContentView.swift */; };
 		7218485E2C214CC700105322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7218485D2C214CC700105322 /* Assets.xcassets */; };
 		721848612C214CC700105322 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721848602C214CC700105322 /* Preview Assets.xcassets */; };
-		72ABECA22C214FE900145C7E /* ModernSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 72ABECA12C214FE900145C7E /* ModernSlider */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72ABECA22C214FE900145C7E /* ModernSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +98,6 @@
 			);
 			name = ModernSliderExample;
 			packageProductDependencies = (
-				72ABECA12C214FE900145C7E /* ModernSlider */,
 			);
 			productName = ModernSliderExample;
 			productReference = 721848562C214CC300105322 /* ModernSliderExample.app */;
@@ -377,13 +374,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		72ABECA12C214FE900145C7E /* ModernSlider */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ModernSlider;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7218484E2C214CC200105322 /* Project object */;
 }

@@ -213,5 +213,7 @@ private struct SliderView: View {
 }
 
 #Preview {
-    ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(0))
+
+        ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(50))
+
 }

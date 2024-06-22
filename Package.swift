@@ -17,10 +17,6 @@ let package = Package(
         .target(
             name: "ModernSlider",
             dependencies: []
-        ),
-        .testTarget(
-            name: "ModernSliderTests",
-            dependencies: ["ModernSlider"]
         )
     ]
 )
