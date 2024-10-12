@@ -10,7 +10,7 @@ import SwiftUI
 /// `ModernSlider` is a customizable slider component for selecting a value from a linear range of values.
 ///
 /// # Features
-/// - Customizable width, height, system image, and color
+/// - Customizable range, width, height, system image, and color
 /// - Customizable title with a background view
 /// - Provides a callback for value changes and for when the dragging ends
 ///
@@ -20,7 +20,7 @@ import SwiftUI
 /// @State private var brightness = 50.0
 ///
 /// var body: some View {
-///     ModernSlider("Brightness", imageType: .system(name: "sun.max.fill"), value: $brightness, onChange: { newValue in
+///     ModernSlider("Brightness", imageType: .system(name: "sun.max.fill"), value: $brightness, in: 5...100, onChange: { newValue in
 ///         print("Brightness changed to \(newValue)")
 ///     })
 /// }
@@ -34,6 +34,7 @@ import SwiftUI
 /// - `sliderHeight`: The height of the slider track and thumb. Defaults to 25.
 /// - `sliderColor`: The color of the slider's fill and thumb. Defaults to white.
 /// - `value`: A binding to the current value of the slider.
+/// - `range`: A closed range representing the minimum and maximum values for the slider. Defaults to 0...100.
 /// - `onChange`: An optional closure that is called when the slider value changes.
 /// - `onChangeEnd`: An optional closure that is called when the dragging ends.
 ///
@@ -52,6 +53,7 @@ public struct ModernSlider: View {
     private let sliderColor: Color
     private let onChange: ((Double) -> Void)?
     private let onChangeEnd: ((Double) -> Void)?
+    private let range: ClosedRange<Double>
 
     public init(
         _ title: String? = nil,
@@ -60,6 +62,7 @@ public struct ModernSlider: View {
         sliderHeight: CGFloat = 25,
         sliderColor: Color = .white,
         value: Binding<Double>,
+        in range: ClosedRange<Double> = 0...100,
         onChange: ((Double) -> Void)? = nil,
         onChangeEnd: ((Double) -> Void)? = nil
     ) {
@@ -69,6 +72,7 @@ public struct ModernSlider: View {
         self.sliderHeight = sliderHeight
         self.sliderColor = sliderColor
         self._value = value
+        self.range = range
         self.onChange = onChange
         self.onChangeEnd = onChangeEnd
     }
@@ -113,12 +117,14 @@ public struct ModernSlider: View {
     }
 
     private func updateValue() {
-        value = Double(offset / (sliderWidth - sliderHeight)) * 100
+        let percentage = Double(offset / (sliderWidth - sliderHeight))
+        value = range.lowerBound + percentage * (range.upperBound - range.lowerBound)
         onChange?(value)
     }
 
     private func updateOffset(to value: Double) {
-        let newOffset = (value / 100.0) * (sliderWidth - sliderHeight)
+        let percentage = (value - range.lowerBound) / (range.upperBound - range.lowerBound)
+        let newOffset = percentage * (sliderWidth - sliderHeight)
         offset = max(0, min(newOffset, sliderWidth - sliderHeight))
     }
 }
@@ -222,6 +228,5 @@ private struct ConditionalBackground: ViewModifier {
 }
 
 #Preview {
-    ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(50))
+    ModernSlider("Brightness", systemImage: "sun.max.fill", value: .constant(50), in: 5...100)
 }
-
