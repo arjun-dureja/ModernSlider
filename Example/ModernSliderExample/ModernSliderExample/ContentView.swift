@@ -51,7 +51,7 @@ struct ContentView: View {
                 .foregroundColor(.gray)
                 .padding(.bottom, 12)
 
-            // Slider with custom color
+            // Slider with custom color and range
             ModernSlider(
                 "Temperature",
                 systemImage: "thermometer",
@@ -59,6 +59,7 @@ struct ContentView: View {
                 sliderHeight: 35,
                 sliderColor: .blue,
                 value: $temperature,
+                in: -40...120,
                 onChangeEnd: { newValue in
                     print("Temperature onChangeEnd: \(newValue)")
                 })

@@ -66,6 +66,7 @@ struct ContentView: View {
             "Brightness",
             systemImage: "sun.max.fill",
             value: $sliderValue,
+            in: 5...100,
             onChange: { newValue in
                 print("Slider value changed to \(newValue)")
             },
@@ -118,6 +119,7 @@ public init(
     sliderHeight: CGFloat = 25,
     sliderColor: Color = .white,
     value: Binding<Double>,
+    in range: ClosedRange<Double> = 0...100,
     onChange: ((Double) -> Void)? = nil,
     onChangeEnd: ((Double) -> Void)? = nil
 )
@@ -130,7 +132,8 @@ public init(
 - `sliderWidth`: The width of the slider track. Defaults to 250.
 - `sliderHeight`: The height of the slider track and thumb. Defaults to 25.
 - `sliderColor`: The color of the slider's fill and thumb. Defaults to white.
-- `value`: A binding to the current value of the slider (0-100).
+- `value`: A binding to the current value of the slider.
+- `range`: A closed range representing the minimum and maximum values for the slider. Defaults to 0...100.
 - `onChange`: An optional closure that is called when the slider value changes.
 - `onChangeEnd`: An optional closure that is called when the dragging ends.
 
