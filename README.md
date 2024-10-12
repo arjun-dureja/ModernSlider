@@ -12,7 +12,7 @@
 
 ## Features
 
-- Customizable width, height, system image, and color
+- Customizable range, width, height, system image, and color
 - Optional title with a background view
 - Smooth sliding animation
 - Callbacks for value changes and drag end events
